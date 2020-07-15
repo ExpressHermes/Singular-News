@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* body {
+    background-color: #1c66a5 !important;
+    height: calc(100% - 55px);
+  } */
+  
+  .main-wrapper {
+    min-width: 100%;
+  }
+  
+  
+  .reg-buttons {
+    padding: .5rem 1.5rem !important;
+  }
+
+  .nav-scroller {
+    position: relative;
+    z-index: 1;
+    height: 3rem;
+    overflow-y: hidden;
+  }
+  
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .card-category {
+    margin-top: -2px;
+    margin-bottom: 2px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgba(28, 101, 165, 0.514);
+  }
+
+  .active-topic {
+    background-color: #1C66A5;
+    color: white;
+  }
+
+  .news-card-content {
+    font-size: 15px;
+  }

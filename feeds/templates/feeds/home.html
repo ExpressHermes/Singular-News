@@ -1,0 +1,50 @@
+{% extends 'feeds/base.html' %}
+{% block content %}
+<div class="mt-5 pt-3 container">
+    <!-- Scroller -->
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex align-items-center">
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" href="#">For You</a>
+            <a class="mx-1 py-1 px-4 link-danger text-decoration-none border rounded-pill" id="covid" href="{% url 'feeds:search' 'covid'%}">Covid-19</a>
+            <a class="active-topic mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="popular" href="{% url 'feeds:home' %}">Popular</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="general" href="{% url 'feeds:search' 'general'%}">World</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="india" href="{% url 'feeds:search' 'india'%}">India</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="technology" href="{% url 'feeds:search' 'technology'%}">Technology</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="business" href="{% url 'feeds:search' 'business'%}">Business</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="politics" href="{% url 'feeds:search' 'politics'%}">Politics</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="health" href="{% url 'feeds:search' 'health'%}">Health</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="sports" href="{% url 'feeds:search' 'sports'%}">Sports</a>
+            <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="science" href="{% url 'feeds:search' 'science'%}">Science</a>
+        </nav>
+    </div>
+    <!-- ./Scroller -->
+    <div class="row justify-content-around">
+        {% for article in articles %}
+            <div class="mb-4 mb-lg-5 col-12 col-md-6 col-lg-4">
+                <div class="card border-0">
+                    <img src={{ article.urlToImage }} class="card-img-top rounded" alt="">
+                    <div class="px-0 card-body">
+                        <p class="text-uppercase card-category"> {{ article.source.name }} </p>
+                        <h5 class="card-title"> {{ article.title }}  </h5>
+                        <p class="card-text news-card-title"> {{ article.description }} </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+<script type="text/javascript">
+    var active_tag = document.getElementsByClassName('active-topic')[0];
+    console.log(active_tag);
+
+    var temp = "{{tag}}";
+    console.log(temp);
+    var current_tag = document.getElementById("{{tag}}");
+    console.log(current_tag);
+
+    active_tag.classList.remove('active-topic');
+    current_tag.classList.add('active-topic');
+</script>
+{% endblock %}
