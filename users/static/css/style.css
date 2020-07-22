@@ -20,8 +20,22 @@ body {
 .reg-buttons {
   padding: .5rem 1.5rem !important;
 }
+
 footer {
-    bottom: 0;
-    width: 100%;
-    font-size: smaller;
+  width: 100%;
+  font-size: smaller;
+}
+
+/* .custom-check {
+  background-image: url('https://images.unsplash.com/photo-1535914254981-b5012eebbd15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-blend-mode: lighten;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+@media only screen and (min-width: 768px) {
+  .interest-wrapper {
+    max-width: 60%;
+  }
 }

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-
+# from django.contrib.postgres.fields import ArrayField
 
 class UserManager(BaseUserManager):
 
@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
         last_login=now,
         date_joined=now, 
         **extra_fields
-    )
+  )
     user.set_password(password)
     user.save(using=self._db)
     return user
@@ -49,3 +49,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         return "/users/%i/" % (self.pk)
+
+
+class UserInterest(models.Model):
+    user = models.ForeignKey(User,related_name='user', verbose_name='user', on_delete=models.CASCADE)
+    interests = models.CharField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+      return f"{str(self.user)} : {self.interests}"

@@ -18,15 +18,22 @@ class SignUpForm(UserCreationForm):
 
 
 class UserLoginForm(AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super(UserLoginForm, self).__init__(*args, **kwargs)
+    pass
 
-        email = forms.EmailField(widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Email Address', 'id': 'id_username'}))
-        password = forms.CharField(widget=forms.PasswordInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'Password',
-                'id': 'id_password',
-            }
-))
+
+# class UserInterestForm(forms.Form):
+#     OPTIONS = (
+#         ('GN', 'General'),
+#         ('HL', 'Health'),
+#         ('BS', 'Business'),
+#         ('SP', 'Sports'),
+#         ('PL', 'Politics'),
+#     )
+
+#     interests = forms.MultipleChoiceField(
+#                         widget = forms.CheckboxSelectMultiple,
+#                         choices = OPTIONS,
+#                 )
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['interests'].widget.attrs['class'] = 'form-check-input'

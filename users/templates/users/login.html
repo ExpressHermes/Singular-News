@@ -42,12 +42,14 @@
   </div>
 </div>
 <script type="text/javascript">
-  var username_field = document.getElementById('id_username');
-  username_field.classList.add('form-control');
-  username_field.setAttribute('placeholder', 'Email Address');
-
-  pass_field = document.getElementById('id_password');
-  pass_field.classList.add('form-control');
-  pass_field.setAttribute('placeholder', 'Password');
+  document.addEventListener('DOMContentLoaded', function() {
+    let username_field = document.getElementById('id_username');
+    username_field.classList.add('form-control');
+    username_field.setAttribute('placeholder', 'Email Address');
+    
+    let pass_field = document.getElementById('id_password');
+    pass_field.classList.add('form-control');
+    pass_field.setAttribute('placeholder', 'Password');
+  });
 </script>
 {% endblock %}
