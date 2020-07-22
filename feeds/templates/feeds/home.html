@@ -36,15 +36,13 @@
 </div>
 
 <script type="text/javascript">
-    var active_tag = document.getElementsByClassName('active-topic')[0];
-    console.log(active_tag);
+    document.addEventListener('DOMContentLoaded', function() {
+        let active_tag = document.getElementsByClassName('active-topic')[0];
+        let temp = "{{tag}}";
+        let current_tag = document.getElementById("{{tag}}");
 
-    var temp = "{{tag}}";
-    console.log(temp);
-    var current_tag = document.getElementById("{{tag}}");
-    console.log(current_tag);
-
-    active_tag.classList.remove('active-topic');
-    current_tag.classList.add('active-topic');
+        active_tag.classList.remove('active-topic');
+        current_tag.classList.add('active-topic');
+    });
 </script>
 {% endblock %}

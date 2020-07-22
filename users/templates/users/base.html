@@ -32,7 +32,7 @@
           <ul class="d-flex navbar-nav ml-lg-auto mt-lg-0">
             {% if user.is_authenticated %}
             <li class="nav-item mx-2 my-1 my-lg-0">
-              <a class="nav-link btn btn-light bg-gradient btn-sm text-black reg-buttons" href="">
+              <a class="nav-link btn btn-light bg-gradient btn-sm text-black reg-buttons" href="{% url 'users:profile' %}">
                 {{ user }}
               </a>
             </li>
@@ -61,7 +61,7 @@
     {% block content %}
 
     {% endblock content %}
-  <footer class="p-2 position-relative text-center text-white">
+  <footer class="p-2 text-center text-white">
     Singularity, Copyright@2020
   </footer>
 </body>
