@@ -5,11 +5,12 @@
     {% include 'feeds/scroller.html' %}
     <!-- ./Scroller -->
     <div class="row justify-content-around">
-        <div class="mb-3 col-12">
-            <h4> {{ tag|title }} </h4>
-            <hr/>
-        </div>
-        {% for article in articles %}
+        {% for category, value in articles.items %}
+            <div class="mb-3 col-12">
+                <h4> {{ category|title }} </h4>
+                <hr/>
+            </div>
+            {% for article in value %}
             <div class="mb-4 mb-lg-5 col-12 col-md-6 col-lg-4">
                 <div class="card border-0">
                     <img src={{ article.urlToImage }} class="card-img-top rounded" alt="">
@@ -20,6 +21,7 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         {% endfor %}
         
     </div>

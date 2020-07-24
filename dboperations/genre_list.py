@@ -1,7 +1,7 @@
-# list of all genres present across databases
-
 class Genres:
-    
-    def genres_list(self):
-        
+    ''' 
+        List of all the genres/categories avaliable to user
+    '''
+
+    def __init__(self):
         self.list = ['sports','business','entertainment','health','science','technology']

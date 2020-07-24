@@ -36,7 +36,8 @@ def interests(request):
                 choices[key] = value
         if choices:
             choices = json.dumps(choices)
-            user_interest = UserInterest(interests=choices, user=request.user)
+            user_interest, created = UserInterest.objects.get_or_create(user=request.user)
+            user_interest.interests = choices
             user_interest.save()
         pp(choices)
         return redirect('feeds:home')
