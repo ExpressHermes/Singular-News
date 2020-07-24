@@ -20,7 +20,7 @@ def signup(request):
                 login(request, user)
             else:
                 print("user is not authenticated")
-            return redirect('user:interests')
+            return redirect('users:interests')
     else:
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
