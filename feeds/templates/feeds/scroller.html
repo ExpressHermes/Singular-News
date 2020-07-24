@@ -1,0 +1,28 @@
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex align-items-center">
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="for-you" href="{% url 'feeds:for_you' 'for-you'%}">For You</a>
+        <a class="mx-1 py-1 px-4 link-danger text-decoration-none border rounded-pill disabled" id="covid" href="{% url 'feeds:search' 'covid'%}">Covid-19</a>
+        <a class="active-topic mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="popular" href="{% url 'feeds:home' %}">Popular</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill disabled" id="general" href="{% url 'feeds:search' 'general'%}">World</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill disabled" id="india" href="{% url 'feeds:search' 'india'%}">India</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="technology" href="{% url 'feeds:search' 'technology'%}">Technology</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="business" href="{% url 'feeds:search' 'business'%}">Business</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="entertainment" href="{% url 'feeds:search' 'entertainment'%}">Entertainment</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill disabled" id="politics" href="{% url 'feeds:search' 'politics'%}">Politics</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="health" href="{% url 'feeds:search' 'health'%}">Health</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="sports" href="{% url 'feeds:search' 'sports'%}">Sports</a>
+        <a class="mx-1 py-1 px-4 link-secondary text-decoration-none border rounded-pill" id="science" href="{% url 'feeds:search' 'science'%}">Science</a>
+    </nav>
+</div>
+
+<!-- scroller js -->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        let active_tag = document.getElementsByClassName('active-topic')[0];
+        let temp = "{{tag}}";
+        let current_tag = document.getElementById("{{tag}}");
+
+        active_tag.classList.remove('active-topic');
+        current_tag.classList.add('active-topic');
+    });
+</script>
