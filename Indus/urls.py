@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic.base import TemplateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('users.urls')),
-    path('', include('feeds.urls')),
+    path('feeds/', include('feeds.urls')),
+    path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='plain/text')),
+    path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='plain/text')),
+    path('', include('users.urls')),
 ]

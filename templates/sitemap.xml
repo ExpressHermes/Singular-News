@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://singular-news.herokuapp.com/</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/login/?next=/user/profile/</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/login/?next=/user/interests/</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/login/?next=/feeds/user/bookmark</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/login/</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feedback/</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/login/?next=/feeds/user/for-you</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore/World</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore/India</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore/ScienceAndTechnology</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore/Business</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore/Entertainment</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore/Politics</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://singular-news.herokuapp.com/feeds/explore/Sports</loc>
+  <lastmod>2020-08-13T08:04:16+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

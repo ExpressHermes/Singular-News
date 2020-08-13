@@ -4,4 +4,4 @@ class Genres:
     '''
 
     def __init__(self):
-        self.list = ['sports','business','entertainment','health','science','technology']
+        self.List = ['Business', 'Entertainment','Lifestyle', 'Politics', 'Sports', 'India','World']

@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container-md">
+  <!-- Scroller -->
+  {% include 'feeds/scroller.html' %}
+
+  <div class="row">
+    <div class="mb-3 col-12 border-bottom">
+      <h5>{{ tag }}</h5>
+    </div>
+    {% for article in articles %}
+    <div class="d-flex align-items-stretch mb-4 col-12 col-md-6 col-lg-4">
+      <div class="card news-card position-relative">
+        <img src="{{ article.image.contentUrl }}" class="card-img-top rounded" alt="" />
+        <div class="p-3 card-body">
+          <div class="d-flex justify-content-between text-uppercase card-category">
+            <div>
+              {{ article.provider.0.name }}
+            </div>
+            {% if user.is_authenticated %}
+            <div class="d-flex">
+              <div class="mr-3">
+                <i data-event="bookmark" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="far fa-bookmark interacted action-icon"></i>
+              </div>
+
+              <!-- <div class="share-action">
+                <i type="button" class="fas fa-share action-icon" data-toggle="dropdown" aria-expanded="false">
+                </i>
+                <ul class="dropdown-menu share-action-menu interacted" data-event="share" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}">
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="fab fa-twitter"></i></a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="fab fa-facebook"></i></a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="fab fa-linkedin"></i></a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="fas fa-link"></i></a>
+                  </li>
+                </ul>
+              </div> -->
+            </div>
+            {% endif %}
+          </div>
+
+          <a class="interacted" data-event="visit" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" href="{{ article.url }}">
+            <h5 class="card-title text-decoration-none">{{ article.name }}</h5>
+          </a>
+          <p class="news-card-content">
+            {{ article.description }}
+          </p>
+        </div>
+        <!-- <div class="card-footer" id="{{article.id}}-rating">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-4">
+              <small>Good pick?</small>
+            </div>
+            <div class="col-8 d-flex justify-content-between">
+              <small data-event="liked" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-success interacted">YES</small>
+
+              <small data-event="maybe" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-secondary interacted">MAYBE</small>
+
+              <small data-event="unliked" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-danger interacted">NO</small>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $(".interacted").on("click", function() {
+      var el = $(this);
+      var category = $(this).attr("data-category");
+      var article_id = $(this).attr("data-id");
+      var url = $(this).attr("data-bookmark-url");
+      var event = $(this).attr("data-event");
+      $.ajax({
+        type: "GET",
+        url: url,
+        data: {
+          event: event,
+          category: category,
+          article_id: article_id,
+        },
+        success: function() {
+          if (event == "bookmark") {
+            el.removeClass("far");
+            el.addClass("fas");
+          } else if (
+            event == "liked" ||
+            event == "unliked" ||
+            event == "maybe"
+          ) {
+            divId = "#" + article_id + "-rating";
+            $(divId).hide();
+          }
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}

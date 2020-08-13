@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-md">
+    <h3>Bookmarks</h3>
+    <hr/>
+    <div class="row">
+        {% for category, value in articles.items %}
+            <!-- <div class="mb-3 col-12 border-bottom">
+                <h5> {{ category|title }} </h5>
+            </div> -->
+            <div class="col-12">
+              <div class="row">
+                {% for article in value %}
+                    <div class="d-flex align-items-stretch mb-4 col-12 col-md-6 col-lg-4">
+                      <div class="card news-card">
+                        <img src="{{ article.image.contentUrl }}" class="card-img-top rounded" alt="" />
+                        <div class="p-3 card-body">
+                          <div class="d-flex justify-content-between text-uppercase card-category">
+                            <div>
+                              {{ article.provider.0.name }}
+                            </div>
+                          </div>
+                
+                          <a class="interacted" data-event="visit" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" href="{{ article.url }}">
+                            <h5 class="card-title text-decoration-none">{{ article.name }}</h5>
+                          </a>
+                          <p class="news-card-content">
+                            {{ article.description }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock %}

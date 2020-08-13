@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="px-5 container-md">
+    <div class="card shadow">
+        <div class="card-header text-center">
+            Select your interests(Atleast 2)
+        </div>
+        <div class="card-body">
+            <form action="{% url 'users:interests' %}" method="POST">
+                {% csrf_token %}
+                <div class="row justify-content-around">
+                    <div class="mb-3 col-12 col-sm-6">
+                        <div class="p-3 border rounded custom-check">
+                            <input class="form-check-input mr-2" onclick=checkCondition() type="checkbox" name="Business" value="Business">
+                            Business             
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6">
+                        <div class="p-3 border rounded custom-check">
+                            <input class="form-check-input mr-2" onclick=checkCondition() type="checkbox" name="Entertainment" value="Entertainment">
+                            Entertainment
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6">
+                        <div class="p-3 border rounded custom-check">
+                            <input class="form-check-input mr-2" onclick=checkCondition() type="checkbox" name="Lifestyle" value="Lifestyle">
+                            Lifestyle               
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6">
+                        <div class="p-3 border rounded custom-check">
+                            <input class="form-check-input mr-2" onclick=checkCondition() type="checkbox" name="Politics" value="Politics">
+                            Politics               
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6">
+                        <div class="p-3 border rounded custom-check">
+                            <input class="form-check-input mr-2" onclick=checkCondition() type="checkbox" name="ScienceAndTechnology" value="ScienceAndTechnology">
+                            Science And Technology            
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6">
+                        <div class="p-3 border rounded custom-check">
+                            <input class="form-check-input mr-2" onclick=checkCondition() type="checkbox" name="Sports"  value="Sports">
+                            Sports               
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6">
+                        <div class="p-3 border rounded custom-check">
+                            <input class="form-check-input mr-2" onclick=checkCondition() type="checkbox" name="World"  value="World">
+                            World               
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-2 col-12 text-center">
+                    <button type="submit" class="send btn btn-info bg-gradient" disabled> Submit </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function checkCondition() {
+        let inp = document.querySelector('.send');
+        let count = document.querySelectorAll('input[type="checkbox"]:checked').length
+        if(count >= 2) {
+            inp.removeAttribute('disabled');
+        } else {
+            inp.setAttribute('disabled', null);
+        }
+    }
+</script>
+{% endblock %}

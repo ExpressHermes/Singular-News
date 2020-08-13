@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="mt-5 pt-3 pt-lg-1 px-lg-5 container article-container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="pt-2 px-3 card border-0">
+                <p class="text-uppercase card-category"> {{ article.provider[0].name }} </p>
+                <h1 class="mb-3 card-title"> {{ article.name }}  </h1>
+                <img class="mb-3 card-image-top rounded" src="{{ article.image.thumbnail.contentUrl }}" alt="article-image">
+                <div class="text-muted text-capitalize">
+                    {{ article.datePublished|date:"d M, Y" }} &#183; {{ article.category }}
+                </div>
+                <div class="px-0 card-body">
+                    {{ article.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

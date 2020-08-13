@@ -1,0 +1,107 @@
+<!-- Sidebar  -->
+<nav id="sidebar" class="d-md-none">
+    <div class="sidebar-header text-center">
+      <div id="dismiss">
+        <i class="fas fa-arrow-left"></i>
+      </div>
+      {% if user.is_authenticated %}
+        <h4>{{ user }}</h4>
+      {% else %}
+        <h4>Welcome, Guest</h4>
+      {% endif %}
+    </div>
+
+    <ul class="list-unstyled components">
+      {% if user.is_authenticated %}
+        <li>
+          <a href="#profileSubMenu" aria-expanded="false" data-toggle="collapse" class="dropdown-toggle">You</a>
+            <ul class="collapse list-unstyled" id="profileSubMenu">
+              <li>
+                <a href="{% url 'users:profile' %}">Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'users:interests'%}">Customize your interests</a>
+              </li>
+              <li>
+                <a href="{% url 'feeds:get_bookmark'%}">Bookmarks</a>
+              </li>
+            </ul>
+        </li>
+      {% endif %}
+      <li>
+        <a href="{% url 'feeds:home' %}"> Explore </a>
+      </li>
+      <!-- <li>
+        <a href="#categorySubMenu" aria-expanded="false" data-toggle="collapse" class="dropdown-toggle">Categories</a>
+        <ul class="collapse list-unstyled" id="categorySubMenu">
+          <li>
+            <a id="Politics" href="{% url 'feeds:explore' 'Politics'%}">Politics</a>
+          </li>
+          <li>
+            <a id="Business" href="{% url 'feeds:explore' 'Business'%}">Business</a>
+          </li>
+          <li>
+            <a id="Sports" href="{% url 'feeds:explore' 'Sports'%}">Sports</a>
+          </li>
+          <li>
+            <a id="Lifestyle" href="{% url 'feeds:explore' 'Lifestyle'%}">Lifestyle</a>
+          </li>
+          <li>
+            <a id="Entertainment" href="{% url 'feeds:explore' 'Entertainment'%}">Entertainment</a>
+          </li>
+          <li>
+            <a id="Movies" href="{% url 'feeds:explore' 'Movies'%}">Movies</a>
+          </li>
+          <li>
+            <a id="ScienceAndTechnology" href="{% url 'feeds:explore' 'ScienceAndTechnology'%}">Science & Tech.</a>
+          </li>
+          <li>
+            <a id="India" href="{% url 'feeds:explore' 'India'%}">India</a>
+          </li>
+          <li>
+            <a id="World" href="{% url 'feeds:explore' 'World'%}">World</a>
+          </li>
+        </ul>
+      </li> -->
+      <li>
+        <a href="{% url 'users:feedback' %}">Give Feedback</a>
+      </li>
+      <li>
+        <a href="#">Help</a>
+      </li>
+    </ul>
+
+    <ul class="list-unstyled register-buttons">
+      {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'users:logout' %}" class="logout">Logout</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{% url 'users:login' %}" class="login">Login</a>
+      </li>
+      <li>
+        <a href="{% url 'users:signup' %}" class="signup">Signup</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <script type="text/javascript">
+      $(document).ready(function () {
+            $("#sidebarCollapse").on("click", function () {
+                $("#sidebar").toggleClass("active");
+
+                if ($(window).width() < 768) {
+                $("#content").addClass("d-none");
+                }
+            });
+
+            $("#dismiss").on("click", function () {
+                if ($(window).width() < 768) {
+                $("#content").removeClass("d-none");
+                }
+                $("#sidebar").toggleClass("active");
+            });
+        });
+  </script>

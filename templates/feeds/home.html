@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-md">
+    <!-- Scroller -->
+    {% include 'feeds/scroller.html' %}
+    <div class="row">
+        {% for category, value in articles.items %}
+            <div class="mb-3 col-12 border-bottom">
+                <h5> {{ category|title }} </h5>
+            </div>
+            <div class="col-12">
+              <div class="row">
+                {% for article in value %}
+                    <div class="d-flex align-items-stretch mb-4 col-12 col-md-6 col-lg-4">
+                      <div class="card news-card">
+                        <img src="{{ article.image.contentUrl }}" class="card-img-top rounded" alt="" />
+                        <div class="p-3 card-body">
+                          <div class="d-flex justify-content-between text-uppercase card-category">
+                            <div>
+                              {{ article.provider.0.name }}
+                            </div>
+                            {% if user.is_authenticated %}
+                            <div class="d-flex">
+                              <div class="mr-3">
+                                <i data-event="bookmark" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="far fa-bookmark interacted action-icon"></i>
+                              </div>
+                
+                              <!-- <div class="share-action">
+                                <i type="button" class="fas fa-share action-icon" data-toggle="dropdown" aria-expanded="false">
+                                </i>
+                                <ul class="dropdown-menu share-action-menu interacted" data-event="share" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}">
+                                  <li>
+                                    <a class="dropdown-item" href="#"><i class="fab fa-twitter"></i></a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" href="#"><i class="fab fa-facebook"></i></a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" href="#"><i class="fab fa-linkedin"></i></a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-link"></i></a>
+                                  </li>
+                                </ul>
+                              </div> -->
+                            </div>
+                            {% endif %}
+                          </div>
+                
+                          <a class="interacted" data-event="visit" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" href="{{ article.url }}">
+                            <h5 class="card-title text-decoration-none">{{ article.name }}</h5>
+                          </a>
+                          <p class="news-card-content">
+                            {{ article.description }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock %}

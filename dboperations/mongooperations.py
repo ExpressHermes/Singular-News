@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from bson import ObjectId
 from .news_api import NewsAPI
 from .genre_list import Genres
 
@@ -19,42 +20,98 @@ class MongoOperations:
         self.api = NewsAPI() 
 
 
-    def insertEverything(self):
-        # for every category in genre list populate the
-        # collection by calling api 
-        categories = self.genre.genre_list
+    def insertEverything(self, categories=' '):
+        # for every category in genre list as well as
+        # headlines and trending news and populate the
+        # collection by calling api
+        categories = self.genre.List
+        categories.append('Headlines')
+        categories.append('Trending')
         for category in categories:
             # retrieve articles from NewsAPI class
-            articles = self.api.getEverything(category)
+            articles = self.api.getHeadOrCategory(category)
             collection = self.db[category]
+            print('Getting %s articles' % category)
             try:
-                collection.insert_many(articles)
-                return 1
+                for article in articles['value']:
+                    collection.insert_one(article)
+                print('Done....')
             except Exception as e:
-                print(e)
-                return 0
+                print('Exception:', e)
+                return
     
 
-    def insertTopHeadlines(self):
+    def insertHeadlines(self):
         # for every category in genre list insert top 
         # headlines articles into collection
-        categories = self.genre.genre_list
-        for category in categories:
-            articles = self.api.getTopHeadlines(category)
-            collection = self.db[category]
-            try:
-                collection.insert_many(articles)
-                return 1
-            except Exception as e:
-                print(e)
-                return 0
+        articles = self.api.getHeadOrCategory()
+        collection = self.db['Headlines']
+        print('Getting Headline articles')
+        try:
+            for article in articles['value']:
+                    collection.insert_one(article)
+            print('Done.....')
+        except Exception as e:
+            print('Exception:', e)
+    
+    def insertTopNews(self):
+        # insert top articles into collection
+        articles = self.api.getTopOrsearchQuery()
+        collection = self.db['Top']
+        print('Getting Top News articles')
+        try:
+            for article in articles['value']:
+                    collection.insert_one(article)
+            print('Done.....')
+        except Exception as e:
+            print('Exception:', e)
+    
+    def insertTrending(self):
+        # get trending articles
+        articles = self.api.trendingTopics()
+        collection = self.db['Trending']
+        print('Getting Trending articles')
+        try:
+            for article in articles['value']:
+                    collection.insert_one(article)
+            print('Done.....')
+        except Exception as e:
+            print('Exception:', e)
     
 
-    def getArticles(self, category):
+    def getArticles(self, category, number):
         # get every article for given category
+        # number : total number of articles to be retrieved
         collection = self.db[category]
-        articles = collection.find({})
+        cursor = collection.find({}).limit(number)
+        articles = []
+        if cursor:
+            for r in cursor:
+               articles.append(r)
         return articles
+    
+    def getOneArticle(self, id, category):
+        collection = self.db[category]
+        cursor = collection.find({'_id': ObjectId(id)})
+        for i in cursor:
+            return i
+
+    def delEverything(self, db_name):
+        # delete every document in every category
+        # inside db
+        categories = self.genre.List
+        categories.append('Headlines')
+        categories.append('Trending')
+        categories.append('Top')
+        
+        for category in categories:
+            print('Deleting %s ' % category)
+            collection = self.db[category]
+            try:
+                collection.delete_many({})
+                print('Done.....')
+            except Exception as e:
+                print('Exception:', e)
 
         
     

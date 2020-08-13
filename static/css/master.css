@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sacramento&display=swap');
+
+body {
+  font-family: "Inter", "Poppins", sans-serif !important;
+  background: #fafafa;
+}
+
+p {
+  font-family: "Inter", "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: rgb(102, 102, 102);
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.navbar {
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.brand-name span {
+  color: #1983ab;
+  font-weight: 600;
+}
+
+.navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #7386d5;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+  position: relative;
+  padding: 40px 20px;
+  background: #6d7fcc;
+}
+
+#dismiss {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  /* top right corner of the sidebar */
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  color: white;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+  color: #7386d5;
+  background: #fff;
+  text-decoration: none;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #6d7fcc;
+}
+
+ul.register-buttons {
+  padding: 20px;
+}
+
+ul.register-buttons a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  /*   border-radius: 5px; */
+  margin-bottom: 5px;
+}
+
+a.login {
+  background: #fff;
+  color: #7386d5 !important;
+}
+
+a.signup,
+a.signup:hover,
+a.logout {
+  background: #6d7fcc !important;
+  color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    NAV SCROLLER
+----------------------------------------------------- */
+
+.nav-scroller {
+  position: relative;
+  z-index: 1;
+  height: 3rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.active-topic,
+.active-topic:hover {
+  background-color: #1c66a5;
+  color: white !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  transition: all 0.3s;
+}
+
+#content a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------------------------------------------------
+    NEWS CARDS
+----------------------------------------------------- */
+
+.news-card {
+  transition: all 0.5s;
+}
+
+.news-card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.news-card a .card-title:hover {
+  color: #1c66a5;
+}
+
+.card-category {
+  margin-top: -2px;
+  margin-bottom: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: rgba(28, 101, 165, 0.514);
+}
+
+.news-card-content {
+  font-size: 15px;
+}
+
+/* ---------------------------------------------------
+   SHARE MENU
+----------------------------------------------------- */
+
+.interacted,
+.action-icon {
+  cursor: pointer;
+}
+
+.action-icon:hover {
+  color: black;
+}
+
+.share-action-menu {
+  max-width: 50px !important;
+}
+
+.fab.fa-twitter {
+  color: #00acee !important;
+}
+
+.fab.fa-facebook {
+  color: #3b5998 !important;
+}
+
+.fab.fa-linkedin {
+  color: #0e76a8 !important;
+}
+
+/* ---------------------------------------------------
+    Vanish
+----------------------------------------------------- */
+
+.vanish-message {
+  color: #7386d5;
+  z-index: -100;
+  font-size: 5em;
+  font-weight: 400;
+  top: 30%;
+  right: 50%;
+  transform: translate(50%);
+  font-family: 'Sacramento', cursive;
+}
+
+/* ---------------------------------------------------
+    TOASTS - ALERT MESSAGES
+----------------------------------------------------- */
+
+.mytoast {
+  z-index: 10;
+  font-weight: 500;
+  color: white;
+  position: absolute;
+  right: 2em;
+  border-radius: 5px;
+}
+
+.toast-info {
+  background-color: #4d7be0;
+}
+
+.toast-success {
+  background-color: #08b455;
+}
+
+.toast-error {
+  background-color: #DC3545;
+}
+
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    min-width: 100vw;
+    height: 100vh;
+    margin-left: 0;
+  }
+  #sidebarCollapse span {
+    display: none;
+  }
+}

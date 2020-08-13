@@ -57,3 +57,34 @@ class UserInterest(models.Model):
 
     def __str__(self):
       return f"{str(self.user)} : {self.interests}"
+
+
+class UserFeedback(models.Model):
+  BOOL_CHOICES = [
+    (True, 'Yes'), (False, 'No')
+  ]
+  SATISFACTION_CHOICES = [
+    ('5', 'Very Satisfield'),
+    ('4', 'Satisfied'),
+    ('3', 'Neutral'),
+    ('2', 'Unsatisfied'),
+    ('1', 'Very unsatisfied'),
+  ]
+  SITE_RETURN_CHOICES = [
+    ('5', '5'),
+    ('4', '4'),
+    ('3', '3'),
+    ('2', '2'),
+    ('1', '1'),
+  ]
+  name = models.CharField(max_length=100)
+  email = models.EmailField(max_length=100)
+  first_visit = models.BooleanField(max_length=1,choices=BOOL_CHOICES)
+  satisfaction = models.CharField(max_length=1,choices=SATISFACTION_CHOICES)
+  site_return = models.CharField(max_length=1,choices=SITE_RETURN_CHOICES)
+  article_num = models.IntegerField()
+  suggestion = models.CharField(max_length=1000,blank=True, null=True)
+  created_at = models.DateTimeField(auto_now_add=True)
+
+  def __str__(self):
+    return self.name

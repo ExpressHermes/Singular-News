@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'head.html' %}
+</head>
+<body>
+  <div class="wrapper">
+    {% include 'sidebar.html' %}
+    <!-- Page content -->
+    <div id="content">
+      {% include 'navbar.html' %}
+
+      <div class="mt-5 pt-5 main-content">
+        {% include 'message.html' %}
+        {% block content %} 
+        {% endblock content %}
+      </div>
+      
+      <footer class="p-2 position-relative text-center text-black">
+        Singularity, Copyright@2020
+      </footer>
+    </div>
+    <div class="d-none d-md-block position-absolute vanish-message">
+      Refresh 🐼
+    </div>
+  </div>
+  </body>
+  {% include 'scripts.html' %}
+</html>

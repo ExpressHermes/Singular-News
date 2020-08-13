@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="px-5 container-md">
+    <div class="card shadow">
+        <div class="card-header text-center">
+            Send us your feedback
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <small class="invalid-feedback">{{form.errors}}</small>
+                {% endif %}
+                {% for field in form %}
+                <div class="row justify-content-around">
+                    <div class="mb-3 col-12 col-sm-6">
+                        {{ field.label }}
+                        {{ field }}
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="mb-2 col-12 text-center">
+                    <button type="submit" class="btn btn-primary"> Submit </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

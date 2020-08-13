@@ -1,0 +1,61 @@
+{% load static %}
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="px-0 px-lg-2 container-md">
+
+      <button type="button" id="sidebarCollapse" class="d-md-none btn btn-outline mr-3">
+        <i class="fas fa-align-left"></i>
+      </button>
+      <a class="m-auto navbar-brand brand-name" href="{% url 'users:signup' %}">
+        <img src="{% static 'icons/icon_2.png' %}" width="30" height="30" class="d-inline-block align-center" alt="site icon" loading="lazy">
+        <span>Singular News</span>
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav ml-auto">
+          <!-- {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'feeds:for_you' 'for-you' %}">For You</a>
+          </li>
+          {%endif%} -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'feeds:home' %}">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:feedback' %}">Give Feedback</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              {{ user }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="{% url 'users:profile' %}">Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'users:interests' %}">Customize your interests</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'feeds:get_bookmark' %}">Bookmarks</a>
+              </li>
+              <li>
+                <a class="dropdown-item text-danger" href="{% url 'users:logout' %}">Logout</a>
+              </li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:signup' %}">Signup</a>
+          </li>
+          
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
