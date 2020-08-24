@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="px-md-5 container-md" style="max-width: 800px;">
+    <div class="display-6 mb-5 text-center">
+        Need some help? <br/>
+        Below are faqs that might help
+    </div>
+    <div class="questions mb-2">
+        <!-- QUESTION 1 -->
+        <div class="mb-4 pb-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question1" aria-expanded="false" aria-controls="question1">
+                    What does Singular News do?
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question1">
+                Singular News bring all the news that fits in your pocket. It allows you to tailor your own feed. Subscribe, select your genre and source of interest and you are ready to read the customized news. 
+            </div>
+        </div>
+
+        <!-- QUESTION 2 -->
+        <div class="mb-4 pb-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question2" aria-expanded="false" aria-controls="question2">
+                    Not happy with your feed? Here is what you can do.
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question2">
+                We are sorry to hear that. Singular’s algorithm learns about your interests the more you interact with it. If the algorithm doesn’t learn quickly enough, you can train it in following 3 ways : 
+                <br />
+    
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <div>  Rating articles : </div> 
+                        <div> You can rate articles into Good or Bad picks. We also provide an option of Maybe just in case you are not sure about seeing such kind of articles in future. </div>
+                    </li>
+                    <li class="mb-2">
+                        <div>  Bookmarking articles : </div> 
+                        <div> You can bookmark an article you like. This increases chances for you to see such kinds of articles more in future. </div>
+                    </li>
+                    <li class="mb-2 d-none">
+                        <div>  Selecting sources : </div> 
+                        <div> You can also select news sources you trust most. Doing this will let you see news from these sources more often. </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+         <!-- QUESTION 3 -->
+        <div class="mb-4 pb-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question3" aria-expanded="false" aria-controls="question3">
+                    Can I see news in some other language?
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question3">
+                No. The only language available is English. 
+            </div>
+        </div>
+
+        <!-- QUESTION 4 -->
+        <div class="mb-4 pb-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question4" aria-expanded="false" aria-controls="question4">
+                    Some news articles are a few days old - why is that?
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question4">
+                We believe that some news might be of importance for a reader for a significant period of time. That is why we consider shelf life of any article of 7 days. 
+            </div>
+        </div>
+
+        <!-- QUESTION 5 -->
+        <div class="mb-4 pb-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question5" aria-expanded="false" aria-controls="question5">
+                    A category I like is not available on Singular News - what can I do?
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question5">
+                You can leave a suggestion in feedback form and we will try to include it as soon as possible.
+            </div>
+        </div>
+
+        <!-- QUESTION 6 -->
+        <div class="mb-4 pd-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question6" aria-expanded="false" aria-controls="question6">
+                    How can I support Singular News
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question6">
+                For now, you can support Singular News by giving us your valuable feedback. 
+            </div>
+        </div>
+
+         <!-- QUESTION 7 -->
+         <div class="mb-4 pd-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question7" aria-expanded="false" aria-controls="question7">
+                    How often does my feed get updated?
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question7">
+                We update your feed every 90 minutes. 
+            </div>
+        </div>
+
+        <!-- QUESTION 8 -->
+        <div class="mb-4 pd-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question8" aria-expanded="false" aria-controls="question8">
+                    I bookmarked more than 10 articles but can only see 10 articles in my bookmarked list - Why is it so ?
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question8">
+                We allow only 10 bookmarks per user at any given time.  
+            </div>
+        </div>
+
+        <!-- QUESTION 9 -->
+        <div class="mb-4 pd-1 border-bottom">
+            <div class="question mb-2">
+                <button class="btn btn-block text-left pl-1" type="button" data-toggle="collapse" data-target="#question9" aria-expanded="false" aria-controls="question9">
+                    Who developed Singular News?
+                </button>
+            </div>
+            <div class="collapse answer pl-1" id="question9">
+                <div class="row justify-content-around">
+                    <div class="mb-3 d-flex align-items-stretch col-12 col-sm-6">
+                        <div class="card">
+                            <img src="{% static 'icons/shivam.jpg' %}" alt="Shivam Yadav" class="card-img-top">
+                            <div class="card-body text-center">
+                                <div class="card-title">
+                                    <h5 class="mb-0">Shivam Yadav</h5>
+                                    <small class="d-block"> 3rd Year, IET Lucknow </small>
+                                </div>
+                                <p class="card-text">
+                                    <small>
+                                    Tinkerer.<br/> Developed the frontend as well as backend of Singular News. Loves reading novels, developing new things and binge watching series.
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="d-flex card-footer justify-content-around align-items-center">
+                                <a href="https://www.linkedin.com/in/express-hermes/" target="_blank">
+                                    <img src="{% static 'icons/linkedin.svg' %}"
+                                    style="width: 1em; height: 1em; color: #1761A0;" alt="linkedin">
+                                </a>
+                                <a href="https://github.com/ExpressHermes" target="_blank">
+                                    <img src="{% static 'icons/github.svg' %}" style="width: 1em; height: 1em; color: #1761A0;" alt="github">
+                                </a>
+                                <!-- <a href="#" target="_blank">
+                                    <img src="{% static 'icons/gmail.svg' %}" style="width: 1em; height: 1em; color: #1761A0;" alt="gmail">
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 d-flex align-items-stretch col-12 col-sm-6">
+                        <div class="card">
+                            <img src="{% static 'icons/ansh.jpg' %}" alt="Ansh Lehri" class="card-img-top">
+                            <div class="card-body text-center">
+                                <div class="card-title">
+                                    <h5 class="mb-0">Ansh Lehri</h5>
+                                    <small class="d-block"> 3rd Year, IET Lucknow </small>
+                                </div>
+                                <p class="card-text">
+                                    <small>
+                                        Budding entrepreneur, interested in Data Science and Machine Learning. Developed Recommendation System of Singular News, did automation of tasks.
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="d-flex card-footer justify-content-around ">
+                                <a href="https://www.linkedin.com/in/ansh-lehri-a57b5517b/" target="_blank">
+                                    <img src="{% static 'icons/linkedin.svg' %}" style="width: 1em; height: 1em; color: #1761A0;" alt="linkedin">
+                                </a>
+                                <a href="https://github.com/ansh-lehri" target="_blank">
+                                    <img src="{% static 'icons/github.svg' %}" style="width: 1em; height: 1em; color: #1761A0;" alt="github">
+                                </a>
+                                <!-- <a href="#" target="_blank">
+                                    <img src="{% static 'icons/gmail.svg' %}" style="width: 1em; height: 1em; color: #1761A0;" alt="gmail">
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

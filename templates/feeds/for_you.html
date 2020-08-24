@@ -22,13 +22,13 @@
                             </div>
                             <div class="d-flex">
                               <div class="mr-3">
-                                <i data-event="bookmark" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="far fa-bookmark interacted action-icon"></i>
+                                <i data-event="bookmark" data-category="{{category}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="far fa-bookmark interacted action-icon"></i>
                               </div>
                 
                               <!-- <div class="share-action">
                                 <i type="button" class="fas fa-share action-icon" data-toggle="dropdown" aria-expanded="false">
                                 </i>
-                                <ul class="dropdown-menu share-action-menu interacted" data-event="share" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}">
+                                <ul class="dropdown-menu share-action-menu interacted" data-event="share" data-category="{{category}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}">
                                   <li>
                                     <a class="dropdown-item" href="#"><i class="fab fa-twitter"></i></a>
                                   </li>
@@ -46,7 +46,7 @@
                             </div>
                           </div>
                 
-                          <a class="interacted" data-event="visit" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" href="{{ article.url }}">
+                          <a class="interacted" data-event="visit" data-category="{{category}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" href="{{ article.url }}">
                             <h5 class="card-title text-decoration-none">{{ article.name }}</h5>
                           </a>
                           <p class="news-card-content">
@@ -59,9 +59,9 @@
                               <small>Good pick?</small>
                             </div>
                             <div class="col-8 d-flex justify-content-between">
-                              <small data-event="liked" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-success interacted">YES</small>
-                              <small data-event="maybe" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-secondary interacted">MAYBE</small>
-                              <small data-event="unliked" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-danger interacted">NO</small>
+                              <small data-event="liked" data-category="{{category}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-success interacted">YES</small>
+                              <small data-event="maybe" data-category="{{category}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-secondary interacted">MAYBE</small>
+                              <small data-event="unliked" data-category="{{category}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" class="text-uppercase text-danger interacted">NO</small>
                             </div>
                           </div>
                         </div>

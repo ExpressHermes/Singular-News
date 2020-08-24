@@ -2,6 +2,8 @@ from pymongo import MongoClient
 from bson import ObjectId
 from .news_api import NewsAPI
 from .genre_list import Genres
+skip_count = 0
+
 
 class MongoOperations:
     '''
@@ -18,6 +20,7 @@ class MongoOperations:
         self.db = self.client[db_name]  
         self.genre = Genres()
         self.api = NewsAPI() 
+        
 
 
     def insertEverything(self, categories=' '):
@@ -25,8 +28,8 @@ class MongoOperations:
         # headlines and trending news and populate the
         # collection by calling api
         categories = self.genre.List
-        categories.append('Headlines')
-        categories.append('Trending')
+       # categories.append('Headlines')
+       # categories.append('Trending')
         for category in categories:
             # retrieve articles from NewsAPI class
             articles = self.api.getHeadOrCategory(category)
@@ -38,7 +41,7 @@ class MongoOperations:
                 print('Done....')
             except Exception as e:
                 print('Exception:', e)
-                return
+                #return
     
 
     def insertHeadlines(self):
@@ -79,11 +82,11 @@ class MongoOperations:
             print('Exception:', e)
     
 
-    def getArticles(self, category, number):
+    def getArticles(self, category, number=10):
         # get every article for given category
-        # number : total number of articles to be retrieved
+        # number : total number of articles to be retrieved, default = 10
         collection = self.db[category]
-        cursor = collection.find({}).limit(number)
+        cursor = collection.find({}).sort([("datePublished",-1)]).limit(number)
         articles = []
         if cursor:
             for r in cursor:
@@ -95,6 +98,7 @@ class MongoOperations:
         cursor = collection.find({'_id': ObjectId(id)})
         for i in cursor:
             return i
+        return -1
 
     def delEverything(self, db_name):
         # delete every document in every category

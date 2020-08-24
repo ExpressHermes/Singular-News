@@ -1,41 +1,73 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container-md">
-    <h3>Bookmarks</h3>
-    <hr/>
-    <div class="row">
-        {% for category, value in articles.items %}
-            <!-- <div class="mb-3 col-12 border-bottom">
-                <h5> {{ category|title }} </h5>
-            </div> -->
-            <div class="col-12">
-              <div class="row">
-                {% for article in value %}
-                    <div class="d-flex align-items-stretch mb-4 col-12 col-md-6 col-lg-4">
-                      <div class="card news-card">
-                        <img src="{{ article.image.contentUrl }}" class="card-img-top rounded" alt="" />
-                        <div class="p-3 card-body">
-                          <div class="d-flex justify-content-between text-uppercase card-category">
-                            <div>
-                              {{ article.provider.0.name }}
-                            </div>
-                          </div>
-                
-                          <a class="interacted" data-event="visit" data-category="{{tag}}" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:bookmark_article' %}" href="{{ article.url }}">
-                            <h5 class="card-title text-decoration-none">{{ article.name }}</h5>
-                          </a>
-                          <p class="news-card-content">
-                            {{ article.description }}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    {% endfor %}
-                  </div>
+  <h3>Bookmarks</h3>
+  <hr />
+  <div class="row">
+    {% if articles %}
+    {% for article in articles %}
+      <div class="d-flex align-items-stretch mb-4 col-12 col-md-6 col-lg-4" id="{{article.id}}-card">
+        <div class="card news-card">
+          <img src="{{ article.image.contentUrl }}" class="card-img-top rounded" alt="" />
+          <div class="p-3 card-body">
+            <div class="d-flex justify-content-between text-uppercase card-category">
+              <div>
+                {{ article.provider.0.name }}
+              </div>
+              <div class="d-flex">
+                <div class="mr-3">
+                  <span data-event="delete" data-id="{{article.id}}" data-bookmark-url="{% url 'feeds:delete_bookmark' %}" class="delete action-icon">
+
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+
+                  </span>
+                </div>
+              </div>
             </div>
-        {% endfor %}
-        
+
+            <a class="interacted" data-event="visit" data-category="{{tag}}" data-id="{{article.id}}"
+              data-bookmark-url="{% url 'feeds:bookmark_article' %}" href="{{ article.url }}">
+              <h5 class="card-title text-decoration-none">{{ article.name }}</h5>
+            </a>
+            <p class="news-card-content">
+              {{ article.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+    {% else %}
+    <div class="text-center">
+      <p>You have not bookmarked any articles yet.</p>
     </div>
+    {% endif %}
+  </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $(".delete").on("click", function() {
+
+      var article_id = $(this).attr("data-id");
+      var url = $(this).attr("data-bookmark-url");
+      $.ajax({
+        type: "GET",
+        url: url,
+        data: {
+          article_id: article_id,
+        },
+        success: function() {
+          var card_id = '#' + article_id + '-card'
+          // console.log(card_id)
+          $(card_id).remove()
+        },
+      });
+    });
+  });
+</script>
 
 {% endblock %}

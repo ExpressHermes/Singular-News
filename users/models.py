@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils import timezone
 # from django.contrib.postgres.fields import ArrayField
@@ -56,7 +57,7 @@ class UserInterest(models.Model):
     interests = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self):
-      return f"{str(self.user)} : {self.interests}"
+      return str(self.user)
 
 
 class UserFeedback(models.Model):
@@ -71,11 +72,11 @@ class UserFeedback(models.Model):
     ('1', 'Very unsatisfied'),
   ]
   SITE_RETURN_CHOICES = [
-    ('5', '5'),
-    ('4', '4'),
-    ('3', '3'),
-    ('2', '2'),
-    ('1', '1'),
+    ('5', 'Very Likely'),
+    ('4', 'Likely'),
+    ('3', 'Sometimes'),
+    ('2', 'Not Likely'),
+    ('1', 'Never'),
   ]
   name = models.CharField(max_length=100)
   email = models.EmailField(max_length=100)
@@ -88,3 +89,11 @@ class UserFeedback(models.Model):
 
   def __str__(self):
     return self.name
+
+
+class UserBookmark(models.Model):
+  User = models.ForeignKey(User, related_name='user_bookmarks', on_delete=models.CASCADE)
+  bookmarks = ArrayField(models.CharField(max_length=30), size=10, blank=True, null=True)
+
+  def __str__(self):
+    return str(self.User)

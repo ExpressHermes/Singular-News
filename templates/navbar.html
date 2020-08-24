@@ -21,10 +21,10 @@
             <a class="nav-link" href="{% url 'feeds:home' %}">Explore</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Help</a>
+            <a class="nav-link" href="{% url 'users:help' %}">Help</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:feedback' %}">Give Feedback</a>
+            <a class="nav-link" href="{% url 'users:feedback' %}">Feedback</a>
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item dropdown">

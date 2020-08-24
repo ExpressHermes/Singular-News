@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hi {{ user }}, Welcome to the Singular News,
+Please click on the given link to confirm your email account.
+
+{{domain}}{% url 'users:activate' uid64=uid token=token %}
+
+Please note that this link will work only once, if due to some reasons, your account activation fails you will need to signup again.
+
+{% endautoescape %}

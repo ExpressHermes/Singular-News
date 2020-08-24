@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-md">
-    <div class="p-3 row card">
-        <div class="p-2 mb-3 col-12 border-bottom">
-           User: {{ user.id }} - {{ user }}
+<div class="d-flex container-md justify-content-center">
+    <div class="row card" style="max-width: 600px;">
+        <div class="mb-3 col-12 card-header">
+           User Profile - {{ user.pk }}
         </div>
-        <div class="p-2 mb-3 col-12">
+        <div class="mb-3 col-12 card-body">
+            <div class="card-title">
+                Email: {{ user }}
+            </div>
             Interests: 
-            {% for value in interests.values %}
-                <li> {{ value }} </li>
-            {% endfor %}
+            {% if interests %}
+                {% for value in interests.values %}
+                    <li> {{ value }} </li>
+                {% endfor %}
+            {% else %}
+                <p> You have not selected your interests</p>
+            {% endif %}
         </div>
     </div>
 </div>

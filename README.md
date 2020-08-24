@@ -1,5 +1,27 @@
-# Singular News
-A django web application to get news articles based on your interests. It prepares personalized feed for every user using Machine learning algorithm.
+# Indus-News
 
-:warning: The ML part has not been commited beacuse my teammate does not wish to share his algorithm :warning:
+To operate Process Scheduling :
+
+Run Process Scheduling/databases_automation.py as a python file from terminal
+
+Once operated it will run indefinitely, calling databases at regular interval of time.
+
+Process Scheduling/records.txt stores time for when a particular operation from databases_automation.py is called.
+
+To stop execution of the file, hit Ctrl+C on terminal.
+
+No need to run db operations from views.py file.
+
+To automate Scheduling/databases_automation.py needs to be initiated once. Then it will self sustain.
+
+
+
+# Changes in automation,procfile dated : 14 August,2020
+
+Delete process_scheduling folder.
+
+Added databases_scheduling.py
+
+Updated requirements.txt and Procfile
+
 

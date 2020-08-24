@@ -2,6 +2,7 @@ from pymongo import MongoClient
 from pymongo.collection import ReturnDocument
 from bson import ObjectId
 from .mongooperations import MongoOperations
+from .genre_list import Genres
 
 class UserGenreDB:
     def __init__(self):
@@ -9,6 +10,7 @@ class UserGenreDB:
 
         # connecting to database
         self.db = self.client['user_genre_db']
+        self.genre = Genres()
 
     def add_interaction(self, coll_name, article_id, user_id, event):
         collection = self.db[coll_name]
@@ -70,20 +72,19 @@ class UserGenreDB:
                 response.append(EverythingDB.getOneArticle(id=id, category=category))
             return response
     
-    def get_bookmark_articles(self, category, user_id):
-        collection = self.db[category]
-        user = collection.find_one({'_id': user_id})
-
-        if user:
-            EverythingDB = MongoOperations('everything')
-            try:
-                data = user['articles']
-            except:
-                return None
-            response = list()
-            for d in data:
-                response.append(EverythingDB.getOneArticle(d['article_id'], category=category))
-            return response
+    def get_bookmark_articles(self, user_id, bookmarks):
+        EverythingDB = MongoOperations('everything')
+        search_list = self.genre.List
+        search_list.append('Headlines')
+        search_list.append('Top')
+        response = []
+        for b in bookmarks:
+            for category in search_list:
+                data = EverythingDB.getOneArticle(b, category)
+                if data != -1:
+                    response.append(data)
+                    break
+        return response
 
 
 
