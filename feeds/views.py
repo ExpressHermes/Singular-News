@@ -8,7 +8,8 @@ from dboperations.mongooperations import MongoOperations
 from dboperations.interactiondb import UserGenreDB
 from dboperations.news_api import NewsAPI 
 from django.http import JsonResponse
-from feed_preparation.Feed_Formation import feed_formation
+# this module is not being committed to this public repo
+# from feed_preparation.Feed_Formation import feed_formation
 import requests
 import json
 import datetime
