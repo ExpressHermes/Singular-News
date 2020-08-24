@@ -24,4 +24,8 @@ Added databases_scheduling.py
 
 Updated requirements.txt and Procfile
 
+<<<<<<< HEAD
+=======
+:warning: The ML part has not been committed because my teammate does not wish to share his algorithm :warning:
+>>>>>>> ab56f2ca16d784cf7ba9f3bdbeb1c2fda5e790f4
 
