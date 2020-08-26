@@ -42,8 +42,10 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
 
+
 def signup_message(request):
     return render(request, 'users/signup_message.html')
+
 
 def activate_account(request, uid64, token):
     try:
@@ -55,11 +57,13 @@ def activate_account(request, uid64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        messages.add_message(request, messages.INFO, 'Account activated successfully!')
+        messages.add_message(request, messages.INFO,
+                             'Account activated successfully!')
         return redirect('users:interests')
     else:
-            # user.delete()
-        messages.add_message(request, messages.ERROR, 'Account activation failed. Signup again!')
+        # user.delete()
+        messages.add_message(request, messages.ERROR,
+                             'Account activation failed. Signup again!')
         return('user:signup')
 
 
@@ -82,14 +86,17 @@ def user_login(request):
                 return redirect('feeds:home')
             else:
                 # add failed message
-                messages.add_message(request, messages.ERROR, 'User not active. Login Failed')
+                messages.add_message(
+                    request, messages.ERROR, 'User not active. Login Failed')
                 return redirect('users:login')
         else:
-            messages.add_message(request, messages.ERROR, 'Invaild credentials')
-            return redirect('users:login') 
+            messages.add_message(request, messages.ERROR,
+                                 'Invaild credentials')
+            return redirect('users:login')
     else:
         form = AuthenticationForm()
         return render(request, 'users/login.html', {'form': form})
+
 
 @login_required
 def user_logout(request):
@@ -97,9 +104,11 @@ def user_logout(request):
     messages.add_message(request, messages.INFO, 'Logged out!')
     return redirect('users:login')
 
+
 @login_required
 def interests(request):
-    CHOICES = ('Business', 'Entertainment', 'Lifestyle', 'Politics', 'Sports', 'World', 'ScienceAndTechnology', 'India')
+    CHOICES = ('Business', 'Entertainment', 'Lifestyle', 'Politics',
+               'Sports', 'World', 'ScienceAndTechnology', 'India')
     if request.method == 'POST':
         form = request.POST
         choices = dict()
@@ -108,10 +117,12 @@ def interests(request):
                 choices[key] = value
         if choices:
             choices = json.dumps(choices)
-            user_interest, created = UserInterest.objects.get_or_create(user=request.user)
+            user_interest, created = UserInterest.objects.get_or_create(
+                user=request.user)
             user_interest.interests = choices
             user_interest.save()
-        messages.add_message(request, messages.INFO, 'Interests has been added successfully')
+        messages.add_message(request, messages.INFO,
+                             'Interests has been added successfully')
         return redirect('feeds:home')
 
     return render(request, 'users/interests.html')
@@ -121,7 +132,8 @@ def interests(request):
 def profile(request):
     user = request.user
     try:
-        user_interests = json.loads(UserInterest.objects.get(user=user).interests)
+        user_interests = json.loads(
+            UserInterest.objects.get(user=user).interests)
     except:
         user_interests = []
     return render(request, 'users/profile.html', {'user': user, 'interests': user_interests})
@@ -132,7 +144,8 @@ def feedback(request):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.INFO, 'Feedback successfully submitted')
+            messages.add_message(request, messages.INFO,
+                                 'Feedback successfully submitted')
             return redirect('users:feedback')
         else:
             messages.add_message(request, messages.ERROR, 'Invalid input')
@@ -146,4 +159,3 @@ def feedback(request):
 
 def help(request):
     return render(request, 'users/help.html')
-            
