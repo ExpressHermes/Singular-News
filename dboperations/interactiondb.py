@@ -4,9 +4,11 @@ from bson import ObjectId
 from .mongooperations import MongoOperations
 from .genre_list import Genres
 
+
 class UserGenreDB:
     def __init__(self):
-        self.client = MongoClient('mongodb+srv://ansh-indus:ansh-lehri-indus@cluster0.ynwdl.mongodb.net/user_genre_db?retryWrites=true&w=majority')
+        self.client = MongoClient(
+            'mongodb+srv://ansh-indus:ansh-lehri-indus@cluster0.ynwdl.mongodb.net/user_genre_db?retryWrites=true&w=majority')
 
         # connecting to database
         self.db = self.client['user_genre_db']
@@ -14,7 +16,7 @@ class UserGenreDB:
 
     def add_interaction(self, coll_name, article_id, user_id, event):
         collection = self.db[coll_name]
-        data = collection.find_one({ '_id':user_id })
+        data = collection.find_one({'_id': user_id})
 
         # condtions to set ratings properly
         if event == 'unliked':
@@ -28,7 +30,7 @@ class UserGenreDB:
             event = 'rating'
         else:
             event_value = 1
-        
+
         if not data:
             try:
                 collection.insert_one({
@@ -53,10 +55,10 @@ class UserGenreDB:
                     event: event_value
                 })
             try:
-                collection.replace_one({ '_id': user_id }, data)
+                collection.replace_one({'_id': user_id}, data)
             except Exception as e:
                 print(e)
-    
+
     def get_feed_articles(self, category, user_id):
         collection = self.db[category]
         user = collection.find_one({'_id': user_id})
@@ -69,9 +71,10 @@ class UserGenreDB:
                 return None
             response = list()
             for id in article_ids:
-                response.append(EverythingDB.getOneArticle(id=id, category=category))
+                response.append(EverythingDB.getOneArticle(
+                    id=id, category=category))
             return response
-    
+
     def get_bookmark_articles(self, user_id, bookmarks):
         EverythingDB = MongoOperations('everything')
         search_list = self.genre.List
@@ -85,7 +88,3 @@ class UserGenreDB:
                     response.append(data)
                     break
         return response
-
-
-
-        

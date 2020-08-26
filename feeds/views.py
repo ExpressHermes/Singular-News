@@ -6,10 +6,9 @@ from django.contrib.messages import get_messages
 from users.models import User, UserInterest, UserBookmark
 from dboperations.mongooperations import MongoOperations
 from dboperations.interactiondb import UserGenreDB
-from dboperations.news_api import NewsAPI 
+from dboperations.news_api import NewsAPI
 from django.http import JsonResponse
-# this module is not being committed to this public repo
-# from feed_preparation.Feed_Formation import feed_formation
+from feed_preparation.Feed_Formation import feed_formation
 import requests
 import json
 import datetime
@@ -19,7 +18,6 @@ EverythingDB = MongoOperations('everything')
 UserGenreDB = UserGenreDB()
 # NewsAPI =   NewsAPI()
 # feed = feed_formation()
-
 
 
 def home(request):
@@ -45,7 +43,7 @@ def explore(request, tag):
     articles = []
     if data:
         for d in data:
-            d['id']  = d['_id']
+            d['id'] = d['_id']
             d['datePublished'] = d['datePublished'][:10]
             articles.append(d)
         # pp(articles)
@@ -56,21 +54,23 @@ def explore(request, tag):
 @login_required
 def for_you(request, tag):
     try:
-        user_interests = json.loads(UserInterest.objects.get(user=request.user).interests)
+        user_interests = json.loads(
+            UserInterest.objects.get(user=request.user).interests)
     except Exception as e:
         print(e)
         user_interests = dict()
     articles = dict()
     for category in user_interests.keys():
         # try retrieving artciles from users prepared feed
-        data = UserGenreDB.get_feed_articles(category=category, user_id=request.user.id)
+        data = UserGenreDB.get_feed_articles(
+            category=category, user_id=request.user.id)
         # if user feed has not been prepared
         if not data:
             data = EverythingDB.getArticles(category=category, number=10)
-        
+
         response = []
         for d in data:
-            d['id']  = d['_id']
+            d['id'] = d['_id']
             response.append(d)
         articles[category] = response
 
@@ -93,7 +93,7 @@ def add_bookmark(request):
                 # print('Here#1')
                 if len(user.bookmarks) < 10:
                     # print('Here#2', len(user.bookmarks))
-                    
+
                     if user:
                         # print('Here#3')
 
@@ -102,7 +102,8 @@ def add_bookmark(request):
                             user.save()
             except:
                 # print('Here#4')
-                user_bookmark = UserBookmark.objects.create(User=request.user,bookmarks=[article_id])
+                user_bookmark = UserBookmark.objects.create(
+                    User=request.user, bookmarks=[article_id])
 
         # add message
         # messages.add_message(request, messages.INFO, 'Added to bookmarks')
@@ -111,6 +112,7 @@ def add_bookmark(request):
         # add message
         # messages.add_message(request, messages.ERROR, 'Failed!')
         return JsonResponse({'success': False}, status=400)
+
 
 @login_required
 def get_bookmark(request):
@@ -121,11 +123,13 @@ def get_bookmark(request):
         print(e)
     data = []
     if bookmarks:
-        data = UserGenreDB.get_bookmark_articles(user_id=request.user.id, bookmarks=bookmarks)
+        data = UserGenreDB.get_bookmark_articles(
+            user_id=request.user.id, bookmarks=bookmarks)
         if data:
             for d in data:
-                d['id']  = d['_id']
+                d['id'] = d['_id']
     return render(request, 'feeds/bookmark.html', {'articles': data})
+
 
 @login_required
 def delete_bookmark(request):

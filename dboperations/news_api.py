@@ -10,9 +10,9 @@ class NewsAPI:
     def __init__(self):
         self.url = "https://bing-news-search1.p.rapidapi.com/news"
         self.headers = {
-                           'x-rapidapi-host': "bing-news-search1.p.rapidapi.com",
-                           'x-rapidapi-key': "451715e6a9msh4b72c383b40a772p1d4d5ejsn26d5b243dba0",
-                           'x-bingapis-sdk': "true"
+                          'x-rapidapi-host': "bing-news-search1.p.rapidapi.com",
+                          'x-rapidapi-key': "d2800226fbmsh54763bace2a7bdep160c0fjsnc6f5b28aeb83",
+                          'x-bingapis-sdk': "true"
                         }
         self.querystring = {"freshness": "Week", "sortBy": "Date", "count": "20", "mkt": "en-IN", "originalImg": "true",  "safeSearch":"Off","textFormat":"Raw"}
                         
