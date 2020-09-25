@@ -15,7 +15,7 @@ class MongoOperations:
 
     def __init__(self, db_name):
         self.client = MongoClient(
-            'mongodb+srv://ansh-indus:ansh-lehri-indus@cluster0.ynwdl.mongodb.net/%s?retryWrites=true&w=majority' % (db_name))
+            'mongodb+srv://demo_user:demo-hacktoberfest@cluster0.ynwdl.mongodb.net/%s?retryWrites=true&w=majority' % (db_name))
 
         # connecting to database
         self.db = self.client[db_name]
