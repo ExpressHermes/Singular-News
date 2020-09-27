@@ -31,6 +31,11 @@ A news app powered with machine learning to provide personalized feed to the use
     ```
     pip install -r requirements.txt
     ```
+- In settings.py inside Indus, replace email settings with your email address and password to allow email verification. Remember to remove these when committing to github.
+    ```
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') # relpace with your email
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') # replace with email password
+    ```
 - Inside the project folder, create migrations for the apps `users` and `feeds`
     ```
     python manage.py makemigrations
@@ -43,6 +48,14 @@ A news app powered with machine learning to provide personalized feed to the use
 
 # Contribution Guidelines
 - Fork and star the repo.
+- Add a upstream link to main branch in your cloned repo
+    ```
+    git remote add upstream https://github.com/ExpressHermes/Singular-News.git
+    ```
+- Keep your cloned repo upto date by pulling from upstream (this will also avoid any merge conflicts while committing new changes)
+    ```
+    git pull upstream master
+    ```
 - Create your feature branch
     ```
     git checkout -b <feature-name>
@@ -55,3 +68,4 @@ A news app powered with machine learning to provide personalized feed to the use
     ```
     git push origin <branch-name>
     ```
+
