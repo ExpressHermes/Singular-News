@@ -1,75 +1,81 @@
 <!-- Sidebar  -->
 <nav id="sidebar" class="d-md-none">
-    <div class="sidebar-header text-center">
-      <div id="dismiss">
-        <i class="fas fa-arrow-left"></i>
-      </div>
-      {% if user.is_authenticated %}
-        <h4>{{ user }}</h4>
-      {% else %}
-        <h4>Welcome, Guest</h4>
-      {% endif %}
+  <div class="sidebar-header text-center">
+    <div id="dismiss">
+      <i class="fas fa-arrow-left"></i>
     </div>
+    {% if user.is_authenticated %}
+    <h4>{{ user }}</h4>
+    {% else %}
+    <h2>Welcome, Guest</h2>
+    {% endif %}
+  </div>
 
-    <ul class="list-unstyled components">
-      {% if user.is_authenticated %}
+  <ul class="list-unstyled components text-center">
+    {% if user.is_authenticated %}
+    <li>
+      <a
+        href="#profileSubMenu"
+        aria-expanded="false"
+        data-toggle="collapse"
+        class="dropdown-toggle"
+        >You</a
+      >
+      <ul class="collapse list-unstyled" id="profileSubMenu">
         <li>
-          <a href="#profileSubMenu" aria-expanded="false" data-toggle="collapse" class="dropdown-toggle">You</a>
-            <ul class="collapse list-unstyled" id="profileSubMenu">
-              <li>
-                <a href="{% url 'users:profile' %}">Profile</a>
-              </li>
-              <li>
-                <a href="{% url 'users:interests'%}">Customize your interests</a>
-              </li>
-              <li>
-                <a href="{% url 'feeds:get_bookmark'%}">Bookmarks</a>
-              </li>
-            </ul>
+          <a href="{% url 'users:profile' %}">Profile</a>
         </li>
-      {% endif %}
-      <li>
-        <a href="{% url 'feeds:home' %}"> Explore </a>
-      </li>
-      <li>
-        <a href="{% url 'users:feedback' %}">Feedback</a>
-      </li>
-      <li>
-        <a href="{% url 'users:help' %}">Help</a>
-      </li>
-    </ul>
+        <li>
+          <a href="{% url 'users:interests'%}">Customize your interests</a>
+        </li>
+        <li>
+          <a href="{% url 'feeds:get_bookmark'%}">Bookmarks</a>
+        </li>
+      </ul>
+    </li>
+    {% endif %}
+    <li>
+      <a href="{% url 'feeds:home' %}"> Explore </a>
+    </li>
+    <li>
+      <a href="{% url 'users:feedback' %}">Feedback</a>
+    </li>
+    <li>
+      <a href="{% url 'users:help' %}">Help</a>
+    </li>
+  </ul>
 
-    <ul class="list-unstyled register-buttons">
-      {% if user.is_authenticated %}
-      <li>
-        <a href="{% url 'users:logout' %}" class="logout">Logout</a>
-      </li>
-      {% else %}
-      <li>
-        <a href="{% url 'users:login' %}" class="login">Login</a>
-      </li>
-      <li>
-        <a href="{% url 'users:signup' %}" class="signup">Signup</a>
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
+  <ul class="list-unstyled register-buttons">
+    {% if user.is_authenticated %}
+    <li>
+      <a href="{% url 'users:logout' %}" class="logout">Logout</a>
+    </li>
+    {% else %}
+    <li>
+      <a href="{% url 'users:login' %}" class="login">Login</a>
+    </li>
+    <li>
+      <a href="{% url 'users:signup' %}" class="signup">Signup</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
 
-  <script async type="text/javascript">
-      $(document).ready(function () {
-            $("#sidebarCollapse").on("click", function () {
-                $("#sidebar").toggleClass("active");
+<script async type="text/javascript">
+  $(document).ready(function () {
+    $("#sidebarCollapse").on("click", function () {
+      $("#sidebar").toggleClass("active");
 
-                if ($(window).width() < 768) {
-                $("#content").addClass("d-none");
-                }
-            });
+      if ($(window).width() < 768) {
+        $("#content").addClass("d-none");
+      }
+    });
 
-            $("#dismiss").on("click", function () {
-                if ($(window).width() < 768) {
-                $("#content").removeClass("d-none");
-                }
-                $("#sidebar").toggleClass("active");
-            });
-        });
-  </script>
+    $("#dismiss").on("click", function () {
+      if ($(window).width() < 768) {
+        $("#content").removeClass("d-none");
+      }
+      $("#sidebar").toggleClass("active");
+    });
+  });
+</script>

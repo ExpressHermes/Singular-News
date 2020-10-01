@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="px-md-5 container-md">
+<div class="px-md-5 container-md whitebox border rounded">
   <div class="row">
-    <div class="p-md-5 col-12 col-lg-6 text-center">
-      <img src="{% static 'icons/icon_2.png' %}" width="60" height="60" class="m-auto d-block" alt="icon" loading="lazy">
-      <h1>Singular News</h1>
-      <p class="lead">अखबार जो आप बनाएं</p>
+    <div class="p-md-5 col-12 col-lg-6 text-center ">
+      <img src="{% static 'icons/icon_2.png' %}" width="60" height="60" class="m-auto d-block wow fadeInUp" data-wow-delay="0.2s"
+       alt="icon" loading="lazy">
+      <h1 class="wow fadeInUp" data-wow-delay="0.3s">Singular News</h1>
+      <p class="lead wow fadeInUp" data-wow-delay="0.4s">अखबार जो आप बनाएं</p>
     </div>
 
-    <div class="py-4 px-md-4 col-12 col-lg-6 bg-white border rounded form-box m-auto">
+    <div class="py-4 px-md-4 col-12 col-lg-6 border rounded form-box m-auto">
       <div class="col-12 mb-4 text-black text-center">
-        <h3>Create account to continue</h3>
+        <h3 class="wow fadeIn"
+        data-wow-delay="0.4s">Create New Account</h3>
       </div>
       <div class="col-12">
         <form class="" method="post">
@@ -47,7 +49,7 @@
             </div>
           {% endfor %}
           <div class="col mb-3">
-            <input type="submit" class="btn btn-success btn-block" value="Signup"></input>
+            <input type="submit" class="btn btn-primary btn-block" value="Signup"></input>
           </div>
         </form>
         <small> Already have an account? <a href="{% url 'users:login' %}"><u>Login here</u></a></small>

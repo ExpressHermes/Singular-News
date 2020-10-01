@@ -17,6 +17,7 @@ import django_heroku
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -84,17 +85,15 @@ WSGI_APPLICATION = 'Indus.wsgi.application'
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),        
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mydb',
         'USER': 'myuser',
         'PASSWORD': 'mypass',
         'HOST': 'localhost',
-        'PORT': ''
+        'PORT': '5432'
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -144,8 +143,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') # relpace with your email
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') # replace with email password
+# to be removed while submitting
+EMAIL_HOST_USER = os.environ.get(
+    'EMAIL_HOST_USER')  # relpace with your email
+EMAIL_HOST_PASSWORD = os.environ.get(
+    'EMAIL_HOST_PASSWORD')  # replace with email password
 EMAIL_USE_TLS = True
 
 django_heroku.settings(locals())

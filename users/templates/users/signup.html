@@ -12,7 +12,7 @@
         <h3>Create Account</h3>
       </div>
       <div class="col-12">
-        <form class="" method="post">
+        <form class="signupform" method="post">
           {% csrf_token %}
           {% for field in form %}
             <div class=" mb-3">
@@ -40,7 +40,7 @@
             </div>
           {% endfor %}
           <div class="col mb-3">
-            <input type="submit" class="btn btn-success btn-block" value="Signup"></input>
+            <input type="submit" class="btn btn-primary btn-block" value="Signup"></input>
           </div>
         </form>
       </div>
