@@ -1,4 +1,4 @@
-# Indus-News
+# Singular News
 A news app powered with machine learning to provide personalized feed to the users based on their interactions on the app.
 
 :warning: The ML part has not been committed because my teammate does not wish to share his algorithm :warning:
