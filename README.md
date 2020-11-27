@@ -1,4 +1,6 @@
 # Singular News
+[![Gitter](https://badges.gitter.im/ExpressHermesOSC/Singular-News.svg)](https://gitter.im/ExpressHermesOSC/Singular-News?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 A news app powered with machine learning to provide personalized feed to the users based on their interactions on the app.
 
  # Installation
