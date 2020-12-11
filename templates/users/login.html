@@ -38,7 +38,12 @@
             <input type="submit" class="btn btn-success btn-block" value="Login"></input>
           </div>
         </form>
+        
+       <div>
+        <small>Forgot Password..??<a href="{% url 'reset_password' %}"><u>Click Here</u></a></small>
+        <br/>
         <small> Need an account? <a href="{% url 'users:signup' %}"><u>Signup here</u></a></small>
+       </div> 
       </div>
 
     </div>
