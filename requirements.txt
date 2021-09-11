@@ -30,6 +30,6 @@ six==1.15.0
 sklearn==0.0
 sqlparse==0.3.1
 threadpoolctl==2.1.0
-urllib3==1.25.9
+urllib3==1.26.5
 whitenoise==5.2.0
 zstandard==0.14.0
